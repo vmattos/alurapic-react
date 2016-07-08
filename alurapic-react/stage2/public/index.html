@@ -46,7 +46,20 @@
           return (
             <div>
               {this.state.data.map((picture) => (
-                <p>{picture.titulo}</p>
+                <div className="col-md-2 painel-animado">
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h3 className="panel-title text-center">{picture.titulo}</h3>
+                    </div>
+                    <div clasName="panel-body">
+                      <img
+                        className="img-responsive center-block"
+                        src={picture.url}
+                        alt={picture.titulo}
+                      />
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           );

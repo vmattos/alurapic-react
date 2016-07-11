@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 
+import PictureCard from '../PictureCard'
+
 class PictureList extends React.Component {
   constructor() {
     super()
@@ -21,20 +23,10 @@ class PictureList extends React.Component {
     return (
       <div>
         {this.state.data.map((picture) => (
-          <div className="col-md-2 painel-animado" key={picture._id}>
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title text-center">{picture.titulo}</h3>
-              </div>
-              <div className="panel-body">
-                <img
-                  className="img-responsive center-block"
-                  src={picture.url}
-                  alt={picture.titulo}
-                />
-              </div>
-            </div>
-          </div>
+          <PictureCard
+            key={picture._id}
+            picture={picture}
+          />
         ))}
       </div>
     );

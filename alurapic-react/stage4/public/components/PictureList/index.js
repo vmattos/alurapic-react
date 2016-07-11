@@ -21,12 +21,12 @@ class PictureList extends React.Component {
     return (
       <div>
         {this.state.data.map((picture) => (
-          <div className="col-md-2 painel-animado">
+          <div className="col-md-2 painel-animado" key={picture._id}>
             <div className="panel panel-default">
               <div className="panel-heading">
                 <h3 className="panel-title text-center">{picture.titulo}</h3>
               </div>
-              <div clasName="panel-body">
+              <div className="panel-body">
                 <img
                   className="img-responsive center-block"
                   src={picture.url}

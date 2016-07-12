@@ -1,5 +1,6 @@
 import React from 'react'
 
+import CardHeader from '../CardHeader'
 import PictureImage from '../PictureImage'
 
 class PictureCard extends React.Component {
@@ -9,12 +10,13 @@ class PictureCard extends React.Component {
     return (
       <div className="col-md-2 painel-animado">
         <div className="panel panel-default">
-          <div className="panel-heading">
-            <h3 className="panel-title text-center">{picture.titulo}</h3>
-          </div>
+
+          <CardHeader title={picture.titulo} />
+
           <div className="panel-body">
             <PictureImage url={picture.url} alt={picture.titulo} />
           </div>
+
         </div>
       </div>
     )

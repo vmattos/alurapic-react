@@ -10,11 +10,8 @@ class PictureCard extends React.Component {
     return (
       <div className="col-md-2 painel-animado">
         <div className="panel panel-default">
-
           <CardHeader title={picture.titulo} />
-
           <CardBody picture={picture} />
-
         </div>
       </div>
     )

@@ -7,7 +7,7 @@ class PictureCard extends React.Component {
     const { picture } = this.props
 
     return (
-      <div className="col-md-2 painel-animado" key={picture._id}>
+      <div className="col-md-2 painel-animado">
         <div className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title text-center">{picture.titulo}</h3>

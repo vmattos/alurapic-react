@@ -17,4 +17,9 @@ class PictureImage extends React.Component {
   }
 }
 
+PictureImage.propTypes = {
+  url: React.PropTypes.string.isRequired,
+  alt: React.PropTypes.string,
+}
+
 export default PictureImage

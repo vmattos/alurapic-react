@@ -13,7 +13,7 @@ class PictureCard extends React.Component {
             <h3 className="panel-title text-center">{picture.titulo}</h3>
           </div>
           <div className="panel-body">
-            <PictureImage url={picture.url} alt={picture.title} />
+            <PictureImage url={picture.url} alt={picture.titulo} />
           </div>
         </div>
       </div>

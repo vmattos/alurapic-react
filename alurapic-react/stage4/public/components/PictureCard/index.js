@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PictureImage from '../PictureImage'
+
 class PictureCard extends React.Component {
   render() {
     const { picture } = this.props
@@ -11,11 +13,7 @@ class PictureCard extends React.Component {
             <h3 className="panel-title text-center">{picture.titulo}</h3>
           </div>
           <div className="panel-body">
-            <img
-              className="img-responsive center-block"
-              src={picture.url}
-              alt={picture.titulo}
-            />
+            <PictureImage url={picture.url} alt={picture.title} />
           </div>
         </div>
       </div>

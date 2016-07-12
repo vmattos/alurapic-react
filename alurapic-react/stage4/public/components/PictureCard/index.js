@@ -21,4 +21,8 @@ class PictureCard extends React.Component {
   }
 }
 
+PictureCard.propTypes = {
+  picture: React.PropTypes.object.isRequired,
+}
+
 export default PictureCard

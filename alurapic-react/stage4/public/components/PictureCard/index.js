@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CardHeader from '../CardHeader'
-import PictureImage from '../PictureImage'
+import CardBody from '../CardBody'
 
 class PictureCard extends React.Component {
   render() {
@@ -13,9 +13,7 @@ class PictureCard extends React.Component {
 
           <CardHeader title={picture.titulo} />
 
-          <div className="panel-body">
-            <PictureImage url={picture.url} alt={picture.titulo} />
-          </div>
+          <CardBody picture={picture} />
 
         </div>
       </div>

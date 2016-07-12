@@ -1,6 +1,7 @@
 import React from 'react'
 
 import PictureImage from '../PictureImage'
+import Button from '../Button'
 
 class CardBody extends React.Component {
   render() {
@@ -9,6 +10,8 @@ class CardBody extends React.Component {
     return (
       <div className="panel-body">
         <PictureImage url={picture.url} alt={picture.titulo} />
+
+        <Button label="Remover" />
       </div>
     )
   }

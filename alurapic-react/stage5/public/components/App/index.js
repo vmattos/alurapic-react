@@ -1,16 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Router, Route, hashHistory } from 'react-router'
 
-import Header from '../Header'
-import PictureList from '../PictureList'
+import PictureListPage from '../../pages/PictureListPage'
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <Header title="Alurapic"/>
-        <PictureList />
-      </div>
+      <Router history={hashHistory}>
+        <Route path="/" component={PictureListPage} />
+      </Router>
     );
   }
 }

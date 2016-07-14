@@ -2,6 +2,7 @@ import React from 'react'
 
 import InputFormGroup from '../InputFormGroup'
 import TextareaFormGroup from '../TextareaFormGroup'
+import SelectFormGroup from '../SelectFormGroup'
 
 class PictureForm extends React.Component {
   render() {
@@ -16,12 +17,7 @@ class PictureForm extends React.Component {
 
             <TextareaFormGroup label="Descrição" name="descricao" />
 
-            <div className="form-group">
-              <label>Grupo</label>
-              <select name="grupo" className="form-control" required>
-                <option value="">Escolha um grupo</option>
-              </select>
-            </div>
+            <SelectFormGroup label="Grupo" name="grupo" groups={[{val: "1", text: "mock"}]} />
 
             <button type="submit" className="btn btn-primary">
               Salvar

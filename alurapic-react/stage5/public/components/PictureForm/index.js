@@ -1,6 +1,7 @@
 import React from 'react'
 
 import InputFormGroup from '../InputFormGroup'
+import TextareaFormGroup from '../TextareaFormGroup'
 
 class PictureForm extends React.Component {
   render() {
@@ -13,11 +14,7 @@ class PictureForm extends React.Component {
 
             <InputFormGroup label="URL" name="url" />
 
-            <div className="form-group">
-              <label>Descrição</label>
-              <textarea name="descricao" className="form-control" >
-              </textarea>
-            </div>
+            <TextareaFormGroup label="Descrição" name="descricao" />
 
             <div className="form-group">
               <label>Grupo</label>

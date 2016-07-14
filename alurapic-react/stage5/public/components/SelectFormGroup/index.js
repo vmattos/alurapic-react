@@ -6,12 +6,18 @@ class SelectFormGroup extends React.Component {
       label,
       name,
       groups,
+      handleChange,
     } = this.props
 
     return (
       <div className="form-group">
         <label>{ label }</label>
-        <select name={ name } className="form-control" required>
+        <select
+          name={ name }
+          className="form-control"
+          onChange={handleChange}
+          required
+        >
           {groups.map((group) => (
             <option value={group._id} key={group._id}>
               {group.nome}
@@ -27,6 +33,7 @@ SelectFormGroup.propTypes = {
   label: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
   groups: React.PropTypes.string.isRequired,
+  handleChange: React.PropTypes.func,
 }
 
 export default SelectFormGroup

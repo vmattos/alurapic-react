@@ -15,6 +15,7 @@ class PictureForm extends React.Component {
     this.handleImageInput = this.handleImageInput.bind(this)
     this.handleTitleInput = this.handleTitleInput.bind(this)
     this.handleDescriptionArea = this.handleDescriptionArea.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +50,13 @@ class PictureForm extends React.Component {
     this.setState(newState)
   }
 
+  handleSelect(e) {
+    console.log(e.nativeEvent.target.value)
+    const form = { grupo: e.nativeEvent.target.value }
+    const newState = Object.assign({}, this.state, form)
+    this.setState(newState)
+  }
+
   render() {
     return (
       <div>
@@ -61,7 +69,7 @@ class PictureForm extends React.Component {
 
             <TextareaFormGroup label="Descrição" name="descricao" handleChange={this.handleDescriptionArea}/>
 
-            <SelectFormGroup label="Grupo" name="grupo" groups={this.state.groups} />
+            <SelectFormGroup label="Grupo" name="grupo" groups={this.state.groups} handleChange={this.handleSelect}/>
 
             <button type="submit" className="btn btn-primary">
               Salvar

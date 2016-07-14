@@ -1,10 +1,27 @@
 import React from 'react'
+import axios from 'axios'
 
 import InputFormGroup from '../InputFormGroup'
 import TextareaFormGroup from '../TextareaFormGroup'
 import SelectFormGroup from '../SelectFormGroup'
 
 class PictureForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { data: [] }
+  }
+
+  componentDidMount() {
+    this.fetchData()
+  }
+
+  fetchData() {
+    axios.get('/v1/grupos')
+      .then(response => this.setState({ data: response.data }))
+      .catch(error => console.error(error));
+  }
+
   render() {
     return (
       <div>
@@ -17,7 +34,7 @@ class PictureForm extends React.Component {
 
             <TextareaFormGroup label="Descrição" name="descricao" />
 
-            <SelectFormGroup label="Grupo" name="grupo" groups={[{val: "1", text: "mock"}]} />
+            <SelectFormGroup label="Grupo" name="grupo" groups={this.state.data} />
 
             <button type="submit" className="btn btn-primary">
               Salvar

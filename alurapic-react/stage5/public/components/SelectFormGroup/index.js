@@ -13,8 +13,8 @@ class SelectFormGroup extends React.Component {
         <label>{ label }</label>
         <select name={ name } className="form-control" required>
           {groups.map((group) => (
-            <option value={group.value}>
-              {group.text}
+            <option value={group._id} key={group._id}>
+              {group.nome}
             </option>
           ))}
         </select>

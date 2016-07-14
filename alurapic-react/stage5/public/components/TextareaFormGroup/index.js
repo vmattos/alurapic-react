@@ -5,12 +5,17 @@ class TextareaFormGroup extends React.Component {
     const {
       label,
       name,
+      handleChange,
     } = this.props
 
     return (
       <div className="form-group">
         <label>{ label }</label>
-        <textarea name={ name } className="form-control" ></textarea>
+        <textarea
+          name={ name }
+          className="form-control"
+          onChange={handleChange}
+        ></textarea>
       </div>
     )
   }
@@ -19,6 +24,7 @@ class TextareaFormGroup extends React.Component {
 TextareaFormGroup.propTypes = {
   label: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  handleChange: React.PropTypes.func,
 }
 
 export default TextareaFormGroup

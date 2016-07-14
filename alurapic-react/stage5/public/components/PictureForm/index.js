@@ -11,7 +11,9 @@ class PictureForm extends React.Component {
     super(props);
 
     this.state = { groups: [] }
+
     this.handleImageInput = this.handleImageInput.bind(this)
+    this.handleTitleInput = this.handleTitleInput.bind(this)
   }
 
   componentDidMount() {
@@ -24,18 +26,25 @@ class PictureForm extends React.Component {
       .catch(error => console.error(error));
   }
 
+  handleTitleInput(e) {
+    const form = { titulo: e.nativeEvent.target.value }
+    const newState = Object.assign({}, this.state, form)
+    this.setState(newState)
+  }
+
   handleImageInput(e) {
-    var newState = Object.assign({}, { imageUrl: e.nativeEvent.target.value }, this.state)
+    const form = { url: e.nativeEvent.target.value }
+    const newState = Object.assign({}, this.state, form)
     this.setState(newState)
   }
 
   render() {
     return (
       <div>
-        <form novalidate name="formulario" className="row">
+        <form novalidate name="formulario" className="row" onSubmit={this.handleSubmit}>
           <div className="col-md-6">
 
-            <InputFormGroup label="Título" name="titulo" />
+            <InputFormGroup label="Título" name="titulo" handleChange={this.handleTitleInput}/>
 
             <InputFormGroup label="URL" name="url" handleChange={this.handleImageInput}/>
 
@@ -53,7 +62,7 @@ class PictureForm extends React.Component {
 
           </div>
           <div className="col-md-6">
-            <PictureImage url={this.state.imageUrl} />
+            <PictureImage url={this.state.url} />
           </div>
         </form>
       </div>

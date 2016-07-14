@@ -4,12 +4,14 @@ import axios from 'axios'
 import InputFormGroup from '../InputFormGroup'
 import TextareaFormGroup from '../TextareaFormGroup'
 import SelectFormGroup from '../SelectFormGroup'
+import PictureImage from '../PictureImage'
 
 class PictureForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { data: [] }
+    this.state = { groups: [] }
+    this.handleImageInput = this.handleImageInput.bind(this)
   }
 
   componentDidMount() {
@@ -18,8 +20,13 @@ class PictureForm extends React.Component {
 
   fetchData() {
     axios.get('/v1/grupos')
-      .then(response => this.setState({ data: response.data }))
+      .then(response => this.setState({ groups: response.data }))
       .catch(error => console.error(error));
+  }
+
+  handleImageInput(e) {
+    var newState = Object.assign({}, { imageUrl: e.nativeEvent.target.value }, this.state)
+    this.setState(newState)
   }
 
   render() {
@@ -30,11 +37,11 @@ class PictureForm extends React.Component {
 
             <InputFormGroup label="Título" name="titulo" />
 
-            <InputFormGroup label="URL" name="url" />
+            <InputFormGroup label="URL" name="url" handleChange={this.handleImageInput}/>
 
             <TextareaFormGroup label="Descrição" name="descricao" />
 
-            <SelectFormGroup label="Grupo" name="grupo" groups={this.state.data} />
+            <SelectFormGroup label="Grupo" name="grupo" groups={this.state.groups} />
 
             <button type="submit" className="btn btn-primary">
               Salvar
@@ -44,6 +51,9 @@ class PictureForm extends React.Component {
 
             <hr />
 
+          </div>
+          <div className="col-md-6">
+            <PictureImage url={this.state.imageUrl} />
           </div>
         </form>
       </div>

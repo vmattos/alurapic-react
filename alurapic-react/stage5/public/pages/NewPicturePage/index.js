@@ -5,7 +5,9 @@ import PictureForm from '../../components/PictureForm'
 class NewPicturePage extends React.Component {
   render() {
     return (
-      <PictureForm />
+      <div className="container">
+        <PictureForm />
+      </div>
     );
   }
 }

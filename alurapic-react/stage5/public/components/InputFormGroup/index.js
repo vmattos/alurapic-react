@@ -5,12 +5,18 @@ class InputFormGroup extends React.Component {
     const {
       label,
       name,
+      handleChange,
     } = this.props
 
     return (
       <div className="form-group">
         <label>{label}</label>
-        <input name={name} className="form-control" required />
+        <input
+          name={name}
+          className="form-control"
+          onChange={ handleChange }
+          required
+        />
       </div>
     )
   }
@@ -19,6 +25,7 @@ class InputFormGroup extends React.Component {
 InputFormGroup.propTypes = {
   label: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  handleChange: React.PropTypes.func,
 }
 
 export default InputFormGroup

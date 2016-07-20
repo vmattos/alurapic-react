@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="alurapic">
+	<head>
+		<base href="/">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Alurapic</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="lib/react.min.js"></script>
+    <script src="lib/react-dom.min.js"></script>
+    <script src="lib/babel-browser.min.js"></script>
+    <script src="lib/axios.min.js"></script>
+	</head>
+	<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+
+      const Header =  React.createClass({
+        render: function() {
+          return (
+            <div className="jumbotron">
+              <h1 className="text-center">Alurapic</h1>
+            </div>
+          );
+        }
+      });
+
+      const PictureList = React.createClass({
+        getInitialState: function() {
+          return { data: [] }
+        },
+
+        componentDidMount: function() {
+          this.fetchData()
+        },
+
+        fetchData: function() {
+          axios.get('/v1/fotos')
+            .then(response => this.setState({ data: response.data }))
+            .catch(error => console.error(error));
+        },
+
+        render: function() {
+          return (
+            <div>
+              {this.state.data.map((picture) => (
+                <div className="col-md-2 painel-animado">
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h3 className="panel-title text-center">{picture.titulo}</h3>
+                    </div>
+                    <div clasName="panel-body">
+                      <img
+                        className="img-responsive center-block"
+                        src={picture.url}
+                        alt={picture.titulo}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          );
+        }
+      });
+
+      const App = React.createClass({
+        render: function() {
+          return (
+            <div className="container">
+              <Header />
+              <PictureList />
+            </div>
+          );
+        }
+      })
+      ReactDOM.render(
+        <App />,
+        document.querySelector('#app')
+      );
+    </script>
+	</body>
+</html>

@@ -14,8 +14,21 @@
 	<body>
     <div id="app"></div>
     <script type="text/babel">
+
+      const Header =  React.createClass({
+        render: function() {
+          return (
+            <div className="jumbotron">
+              <h1 className="text-center">Alurapic</h1>
+            </div>
+          );
+        }
+      });
+
       ReactDOM.render(
-        <h1>Hello!</h1>,
+        <div className="container">
+          <Header />
+        </div>,
         document.querySelector('#app')
       );
     </script>

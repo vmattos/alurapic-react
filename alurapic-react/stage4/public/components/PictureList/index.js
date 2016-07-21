@@ -7,9 +7,10 @@ class PictureList extends React.Component {
   constructor() {
     super()
     this.state = { data: [] }
+    this.removeItem = this.removeItem.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.fetchData()
   }
 
@@ -19,6 +20,13 @@ class PictureList extends React.Component {
       .catch(error => console.error(error));
   }
 
+  removeItem(id, e) {
+    return () => {
+      const newState = this.state.data.filter((i) => i._id !== id)
+      this.setState({ data: newState })
+    }
+  }
+
   render() {
     return (
       <div>
@@ -26,6 +34,7 @@ class PictureList extends React.Component {
           <PictureCard
             key={picture._id}
             picture={picture}
+            removeItem={this.removeItem}
           />
         ))}
       </div>
